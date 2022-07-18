@@ -1,0 +1,12 @@
+.tasks-container {
+    position: absolute;
+    width: 400px;
+    aspect-ratio: 0.7;
+    background-color: rgb(251, 251, 251);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--roundness);
+    padding: 30px;
+    box-shadow: 0 40px 30px -30px rgba(70, 70, 70, 0.2);
+}

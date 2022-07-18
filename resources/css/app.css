@@ -1,0 +1,12 @@
+:root {
+    --roundness: 15px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
