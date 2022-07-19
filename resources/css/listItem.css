@@ -29,15 +29,14 @@
     gap: 1em;
     grid-auto-flow: column;
     left: 105%;
-    background-color: rgb(220, 220, 220);
-    color: #fff;
-    border-radius: calc(var(--roundness) / 1.5);
-    padding: 10px 20px;
+    background-color: white;
     z-index: 1;
     white-space: nowrap;
     box-sizing: border-box;
-    font-size: 17px;
     opacity: 0;
+    border-radius: inherit;
+    font-size: inherit;
+    padding: inherit;
 }
 
 .tooltip-text > * {
