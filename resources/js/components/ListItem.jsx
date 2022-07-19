@@ -1,7 +1,9 @@
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import "../../css/listItem.css";
 
-export default function ListItem({ title, checked = false }) {
+export default function ListItem({ title, checked = false, dateCreated = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString() }) {
     const [complete, isComplete] = useState(checked);
 
     return (
@@ -20,6 +22,10 @@ export default function ListItem({ title, checked = false }) {
                 style={{ textDecoration: complete ? "line-through" : null }}
             >
                 {title}
+            </div>
+            <div className="todo-item-tooltip">
+                <FontAwesomeIcon icon={faInfoCircle} />
+                <span class="tooltip-text">Added {dateCreated}</span>
             </div>
         </div>
     );
