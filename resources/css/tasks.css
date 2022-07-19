@@ -48,6 +48,10 @@
     background-color: rgb(250, 250, 250);
 }
 
+.tabs > div:hover .tab-tooltip-text {
+    animation: menu-tooltip 0.1s 1s ease-out forwards;
+}
+
 .tabs > div > div {
     position: absolute;
     opacity: 0;
@@ -67,4 +71,28 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
+}
+
+.tab-tooltip-text {
+    position: absolute;
+    z-index: 1;
+    white-space: nowrap;
+    opacity: 0;
+    font-size: 17px;
+}
+
+.tab-tooltip-text > * {
+    display: flex;
+    align-self: center;
+}
+
+@keyframes menu-tooltip {
+    from {
+        transform: translate(-60%, 0) scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-60%, -50px) scale(1);
+        opacity: 1;
+    }
 }

@@ -1,4 +1,4 @@
-import { faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDay, faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import '../../css/tasks.css'
@@ -15,11 +15,15 @@ export default function Tasks() {
                 <div className="tabs">
                     <div onClick={() => showTodos(true)}>
                         <FontAwesomeIcon icon={faList} />
-                        <div>To Dos</div>
+                        <span class="tab-tooltip-text">My To Dos</span>
                     </div>
                     <div onClick={() => showTodos(false)}>
                         <FontAwesomeIcon icon={faNoteSticky} />
-                        <div>Notes</div>
+                        <span class="tab-tooltip-text">My Notes</span>
+                    </div>
+                    <div>
+                        <FontAwesomeIcon icon={faCalendarDay} />
+                        <span class="tab-tooltip-text">My Reminders</span>
                     </div>
                 </div>
                 <div className="tab-content-area">
