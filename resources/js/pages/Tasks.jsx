@@ -1,22 +1,24 @@
 import { faCalendarDay, faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
 import '../../css/tasks.css';
+import { useState, useEffect } from 'react';
 import AddToDoForm from '../components/AddToDoForm';
 import ToDoItem from '../components/ToDoItem';
 import NoteItem from '../components/NoteItem';
-import uuid from 'react-native-uuid';
-import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 
 export default function Tasks() {
-    const [todosTab, showTodos] = useState(true);
+    const [isTodosTab, showTodos] = useState(true);
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        setTodos(todosData);
+        fetch('/todos')
+            .then((res) => res.json())
+            .then(setTodos);
     }, []);
 
-    // confetti()
+    const onAddTodo = (todo) => {
+        setTodos((arr) => [...arr, todo]);
+    };
 
     return (
         <div className="tasks-container">
@@ -36,71 +38,26 @@ export default function Tasks() {
                     </div>
                 </div>
                 <div className="tab-content-area">
-                    {todosTab ? (
-                        <div className="todos">
-                            {todos.map((todo) => {
-                                return <ToDoItem key={todo.id} title={todo.title} checked={todo.complete} />;
-                            })}
-                        </div>
+                    {isTodosTab ? (
+                        <>
+                            <div className="todos">
+                                {todos.map((todo) => {
+                                    return <ToDoItem key={todo.id} title={todo.title} checked={todo.complete} />;
+                                })}
+                            </div>
+                            <AddToDoForm onAdd={onAddTodo} />
+                        </>
                     ) : (
-                        <div className="notes">
-                            <NoteItem text="This is some text" />
-                            <NoteItem text="This is some more fancier text" />
-                        </div>
+                        <>
+                            <div className="notes">
+                                <NoteItem text="This is some text" />
+                                <NoteItem text="This is some more fancier text" />
+                            </div>
+                            {/* AddNoteForm */}
+                        </>
                     )}
                 </div>
             </div>
-            <AddToDoForm />
         </div>
     );
 }
-
-export const todosData = [
-    {
-        id: uuid.v4(),
-        title: 'Task 1',
-        complete: false,
-        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
-    },
-    {
-        id: uuid.v4(),
-        title: 'Task 2',
-        complete: false,
-        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
-    },
-    {
-        id: uuid.v4(),
-        title: 'Task 3',
-        complete: false,
-        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
-    },
-    {
-        id: uuid.v4(),
-        title: 'Task 4',
-        complete: false,
-        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
-    },
-];
-
-export const notesData = [
-    {
-        id: uuid.v4(),
-        text: 'This is a note 1',
-        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
-    },
-    {
-        id: uuid.v4(),
-        text: 'This is a note 2',
-        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
-    },
-    {
-        id: uuid.v4(),
-        text: 'This is a note 3',
-        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
-    },
-    {
-        id: uuid.v4(),
-        text: 'This is a note 4',
-        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
-    },
-];

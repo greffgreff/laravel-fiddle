@@ -4,18 +4,23 @@ import { useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import '../../css/addToDoForm.css';
 
-export default function AddDoToForm() {
+export default function AddDoToForm({ onAdd }) {
     const [form, showForm] = useState(false);
     const todo = useRef(null);
 
     const handlePost = () => {
         showForm(false);
+
         if (!todo.current.value) {
             return;
         }
-        axios.post('/saveTodo', { todo: todo.current.value }).catch((error) => {
-            console.log('ERROR:: ', error.response.data);
-        });
+
+        axios
+            .post('/saveTodo', { todo: todo.current.value })
+            .then((res) => onAdd(res.data))
+            .catch((error) => {
+                console.log('ERROR:: ', error.response.data);
+            });
     };
 
     return (

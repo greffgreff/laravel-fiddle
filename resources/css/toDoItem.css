@@ -35,13 +35,13 @@
     box-sizing: border-box;
     opacity: 0;
     border-radius: inherit;
-    font-size: inherit;
     padding: inherit;
+    font-size: inherit;
 }
 
 .tooltip-text > * {
     display: flex;
-    align-self:center;
+    align-self: center;
 }
 
 .todo-item-container:hover .tooltip-text {

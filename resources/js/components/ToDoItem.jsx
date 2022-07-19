@@ -1,13 +1,21 @@
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
-import '../../css/ToDoItem.css'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
+import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+import '../../css/ToDoItem.css';
 
 export default function ToDoItem({ title, checked = false, dateCreated }) {
-    const [complete, isComplete] = useState(checked)
+    const [complete, isComplete] = useState(checked);
+
+    const handleComplete = () => {
+        isComplete(!complete);
+        if (!complete) {
+            confetti();
+        }
+    };
 
     return (
-        <div className="todo-item-container" onClick={() => isComplete(!complete)}>
+        <div className="todo-item-container" onClick={handleComplete}>
             <input
                 className="todo-checkbox"
                 type="checkbox"
@@ -24,7 +32,7 @@ export default function ToDoItem({ title, checked = false, dateCreated }) {
                 </span>
             ) : null}
         </div>
-    )
+    );
 }
 
 // textDecoration: complete ? 'line-through' : null
