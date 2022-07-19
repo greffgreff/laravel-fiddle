@@ -1,20 +1,39 @@
 .form-container {
     position: absolute;
-    width: 500px;
-    height: 400px;
+    top: -100px;
+    right: 100px;
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+    position: absolute;
     background-color: white;
     transform: translate(-50%, -50%);
     border-radius: var(--roundness);
     box-shadow: 0 40px 30px -30px rgba(70, 70, 70, 0.1);
     animation: form 0.25s ease-out forwards;
+    /* background-color: rgb(255, 238, 57); */
 }
 
-.form-close-btn {
-    position: absolute;
+.form-container-btns {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+}
+
+.form-btn {
     padding: 10px 15px;
     border: none;
-    font-size: 22px;
+    font-size: 25px;
     background-color: transparent;
     box-shadow: inherit;
     overflow-y: scroll;
+    width: fit-content;
+}
+
+.todo-input {
+    font-size: 20px;
+    margin: 20px 30px;
+    width: 400px;
+    height: auto;
+    resize: none;
+    border: none;
 }

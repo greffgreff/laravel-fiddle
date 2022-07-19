@@ -1,4 +1,4 @@
-import { faPlus, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import Draggable from 'react-draggable'
@@ -16,9 +16,15 @@ export default function AddForm() {
             {form ? (
                 <Draggable>
                     <div className="form-container">
-                        <button className="form-close-btn" onClick={() => showForm(false)}>
-                            <FontAwesomeIcon icon={faXmark} />
-                        </button>
+                        <div className="form-container-btns">
+                            <button className="form-btn" onClick={() => showForm(false)}>
+                                <FontAwesomeIcon icon={faXmark} />
+                            </button>
+                            <button className="form-btn" onClick={() => showForm(false)}>
+                                <FontAwesomeIcon icon={faCheck} />
+                            </button>
+                        </div>
+                        <textarea className="todo-input" placeholder="Beat the shit out of someone..." />
                     </div>
                 </Draggable>
             ) : null}
