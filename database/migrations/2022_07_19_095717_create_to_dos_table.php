@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('user_id');
             $table->string('title');
-            $table->boolean('is_completed');
+            $table->integer('is_completed');
             $table->timestamps();
         });
     }
