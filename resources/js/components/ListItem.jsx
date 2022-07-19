@@ -3,6 +3,7 @@ import "../../css/listItem.css";
 
 export default function ListItem({ title, checked = false }) {
     const [complete, isComplete] = useState(checked);
+
     return (
         <div
             className="todo-item-container"
@@ -12,6 +13,7 @@ export default function ListItem({ title, checked = false }) {
                 className="todo-checkbox"
                 type="checkbox"
                 checked={complete}
+                onChange={() => null} // remove warning
             />
             <div
                 className="todo-item-title"
