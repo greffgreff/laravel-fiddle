@@ -8,11 +8,11 @@
     transform: translate(-50%, -50%);
     border-radius: var(--roundness);
     box-shadow: 0 40px 30px -30px rgba(70, 70, 70, 0.1);
-    animation: intro 0.5s ease-out forwards;
+    /* animation: intro 0.5s ease-out forwards; */
 }
 
 @keyframes intro {
-    from { 
+    from {
         opacity: 0;
         transform: translate(-50%, -45%);
     }
@@ -72,21 +72,6 @@
     position: absolute;
     opacity: 0;
 }
-
-/* .tabs > div:hover > div {
-    animation: slideUp 0.2s 1s ease-out forwards;
-}
-
-@keyframes slideUp {
-    from { 
-        opacity: 0;
-        transform: translateY(0px); 
-    }
-    to {
-        opacity: 1;
-        transform: translateY(10px); 
-    }
-} */
 
 .tab-content-area {
     padding: 20px;

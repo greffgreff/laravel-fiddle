@@ -1,0 +1,20 @@
+.form-container {
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    border-radius: var(--roundness);
+    box-shadow: 0 40px 30px -30px rgba(70, 70, 70, 0.1);
+    animation: form 0.25s ease-out forwards;
+}
+
+.form-close-btn {
+    position: absolute;
+    padding: 10px 15px;
+    border: none;
+    font-size: 22px;
+    background-color: transparent;
+    box-shadow: inherit;
+    overflow-y: scroll;
+}
