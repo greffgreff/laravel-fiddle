@@ -2,9 +2,9 @@ import { faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import '../../css/tasks.css'
-import AddToDoForm from './AddToDoForm'
-import ListItem from './ListItem'
-import NoteItem from './NoteItem'
+import AddToDoForm from '../components/AddToDoForm'
+import ListItem from '../components/ListItem'
+import NoteItem from '../components/NoteItem'
 
 export default function Tasks() {
     const [todos, showTodos] = useState(true)

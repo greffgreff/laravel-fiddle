@@ -1,5 +1,6 @@
 .note-item-container .note-block {
-    background-color: pink;
+    background-color: rgb(255, 166, 181);
+    /* background-color: rgb(252, 237, 71); */
     --ref: 155px;
     border-radius: calc(var(--ref)/15);
     padding: calc(var(--ref)/20);
