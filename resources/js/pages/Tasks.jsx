@@ -1,13 +1,22 @@
 import { faCalendarDay, faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../../css/tasks.css'
 import AddToDoForm from '../components/AddToDoForm'
-import ListItem from '../components/ListItem'
+import ToDoItem from '../components/ToDoItem'
 import NoteItem from '../components/NoteItem'
+import uuid from 'react-native-uuid';
+import confetti from 'https://cdn.skypack.dev/canvas-confetti'
 
 export default function Tasks() {
-    const [todos, showTodos] = useState(true)
+    const [todosTab, showTodos] = useState(true)
+    const [todos, setTodos] = useState([])
+
+    useEffect(() => {
+        setTodos(todosData)
+    }, [])
+
+    // confetti()
 
     return (
         <div className="tasks-container">
@@ -15,25 +24,23 @@ export default function Tasks() {
                 <div className="tabs">
                     <div onClick={() => showTodos(true)}>
                         <FontAwesomeIcon icon={faList} />
-                        <span class="tab-tooltip-text">My To Dos</span>
+                        <span className="tab-tooltip-text">My To Dos</span>
                     </div>
                     <div onClick={() => showTodos(false)}>
                         <FontAwesomeIcon icon={faNoteSticky} />
-                        <span class="tab-tooltip-text">My Notes</span>
+                        <span className="tab-tooltip-text">My Notes</span>
                     </div>
                     <div>
                         <FontAwesomeIcon icon={faCalendarDay} />
-                        <span class="tab-tooltip-text">My Reminders</span>
+                        <span className="tab-tooltip-text">My Reminders</span>
                     </div>
                 </div>
                 <div className="tab-content-area">
-                    {todos ? (
+                    {todosTab ? (
                         <div className="todos">
-                            <ListItem key="1" title="Task 1, this is intented to be a very long task with a lot of text" checked />
-                            <ListItem key="2" title="Task 2" checked />
-                            <ListItem key="3" title="Task 3" checked />
-                            <ListItem key="4" title="Task 4" />
-                            <ListItem key="5" title="Task 5" />
+                            {todos.map((todo) => {
+                                return <ToDoItem key={todo.id} title={todo.title} checked={todo.complete} />
+                            })}
                         </div>
                     ) : (
                         <div className="notes">
@@ -47,3 +54,53 @@ export default function Tasks() {
         </div>
     )
 }
+
+export const todosData = [
+    {
+        id: uuid.v4(),
+        title: 'Task 1',
+        complete: false,
+        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+    },
+    {
+        id: uuid.v4(),
+        title: 'Task 2',
+        complete: false,
+        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+    },
+    {
+        id: uuid.v4(),
+        title: 'Task 3',
+        complete: false,
+        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+    },
+    {
+        id: uuid.v4(),
+        title: 'Task 4',
+        complete: false,
+        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+    },
+]
+
+export const notesData = [
+    {
+        id: uuid.v4(),
+        text: 'This is a note 1',
+        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+    },
+    {
+        id: uuid.v4(),
+        text: 'This is a note 2',
+        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+    },
+    {
+        id: uuid.v4(),
+        text: 'This is a note 3',
+        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+    },
+    {
+        id: uuid.v4(),
+        text: 'This is a note 4',
+        dateAdded: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
+    },
+]

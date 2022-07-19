@@ -1,9 +1,9 @@
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
-import '../../css/listItem.css'
+import '../../css/ToDoItem.css'
 
-export default function ListItem({ title, checked = false, dateCreated = new Date() }) {
+export default function ToDoItem({ title, checked = false, dateCreated }) {
     const [complete, isComplete] = useState(checked)
 
     return (
@@ -14,13 +14,15 @@ export default function ListItem({ title, checked = false, dateCreated = new Dat
                 checked={complete}
                 onChange={() => null} // remove warning
             />
-            <div className="todo-item-title" style={{ opacity: complete ? 0.2 : 1,  }}>
+            <div className="todo-item-title" style={{ opacity: complete ? 0.2 : 1 }}>
                 {title}
             </div>
-            <span class="tooltip-text">
-                <FontAwesomeIcon icon={faInfoCircle} />
-                Added {dateCreated.toLocaleDateString() + ' ' + dateCreated.toLocaleTimeString()}
-            </span>
+            {dateCreated ? (
+                <span class="tooltip-text">
+                    <FontAwesomeIcon icon={faInfoCircle} />
+                    Added {dateCreated}
+                </span>
+            ) : null}
         </div>
     )
 }

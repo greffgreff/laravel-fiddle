@@ -8,7 +8,7 @@
     transform: translate(-50%, -50%);
     border-radius: var(--roundness);
     box-shadow: 0 40px 30px -30px rgba(70, 70, 70, 0.1);
-    /* animation: intro 0.5s ease-out forwards; */
+    animation: intro 0.5s ease-out forwards;
 }
 
 @keyframes intro {
