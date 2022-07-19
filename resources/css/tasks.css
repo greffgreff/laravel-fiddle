@@ -56,6 +56,26 @@
     background-color: rgb(250, 250, 250);
 }
 
+.tabs > div > div {
+    position: absolute;
+    opacity: 0;
+}
+
+/* .tabs > div:hover > div {
+    animation: slideUp 0.2s 1s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(0px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(10px); 
+    }
+} */
+
 .tab-content-area {
     padding: 20px;
     height: 100%;

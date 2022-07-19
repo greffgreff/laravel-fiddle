@@ -17,9 +17,11 @@ export default function Tasks() {
                 <div className="tabs">
                     <div onClick={() => showTodos(true)}>
                         <FontAwesomeIcon icon={faList} />
+                        <div>To Dos</div>
                     </div>
                     <div onClick={() => showTodos(false)}>
                         <FontAwesomeIcon icon={faNoteSticky} />
+                        <div>To Dos</div>
                     </div>
                 </div>
                 <div className="tab-content-area">
