@@ -2,11 +2,66 @@
     position: absolute;
     width: 400px;
     aspect-ratio: 0.7;
-    background-color: rgb(251, 251, 251);
+    background-color: white;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: var(--roundness);
-    padding: 30px;
-    box-shadow: 0 40px 30px -30px rgba(70, 70, 70, 0.2);
+    box-shadow: 0 40px 30px -30px rgba(70, 70, 70, 0.1);
+}
+
+.add-task-btn {
+    position: absolute;
+    width: 18%;
+    aspect-ratio: 1;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    border-radius: 100%;
+    border: none;
+    font-size: 33px;
+    background-color: rgb(253, 228, 13);
+    color: white;
+    box-shadow: inherit;
+    overflow-y: scroll;
+}
+
+.add-task-btn:hover {
+    transform: translate(-50%, 50%) scale(1.2);
+}
+
+.tabs-container {
+    width: 100%;
+    height: 80%;
+}
+
+.tabs {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-auto-flow: column;
+    border-radius: var(--roundness) var(--roundness) 0 0;
+    overflow: hidden;
+}
+
+.tabs > div {
+    align-self: center;
+    text-align: center;
+    font-size: 21px;
+    padding: 12px;
+}
+
+.tabs > div:hover {
+    cursor: pointer;
+    background-color: rgb(250, 250, 250);
+}
+
+.tab-content-area {
+    padding: 20px;
+    height: 100%;
+    overflow: scroll;
+}
+
+.todos {
+    display: grid;
 }

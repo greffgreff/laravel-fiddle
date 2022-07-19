@@ -4,9 +4,25 @@
 
 body {
     margin: 0;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
+    background-color: rgb(250, 250, 250);
 }
 
 * {
+    font-family: inherit;
     box-sizing: border-box;
+    transition: all 0.15s ease-out;
+}
+
+*:focus {
+    outline: unset;
+}
+
+button:hover,
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    accent-color: #eee;
 }

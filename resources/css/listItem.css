@@ -1,0 +1,24 @@
+.todo-item-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: var(--roundness);
+}
+
+.todo-item-container > * {
+    margin: 0;
+    width: fit-content;
+}
+
+.todo-item-container:hover {
+    background-color: rgb(250, 250, 250);
+}
+
+.todo-checkbox {
+    width: 20px;
+}
+
+.todo-item-title {
+    text-decoration-thickness: 5px !important;  
+}
