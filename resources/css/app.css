@@ -4,15 +4,20 @@
 
 body {
     margin: 0;
-    font-family: "Nunito", sans-serif;
+    font-family: 'Nunito', sans-serif;
     background-color: rgb(250, 250, 250);
     /* background-color: palegoldenrod; */
 }
 
 * {
     font-family: inherit;
-    box-sizing: border-box;
     transition: all 0.15s ease-out;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 *:focus {
@@ -20,10 +25,16 @@ body {
 }
 
 button:hover,
-input[type="checkbox"] {
+input[type='checkbox'] {
     cursor: pointer;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
     accent-color: rgb(42, 106, 223);
+}
+
+textarea {
+    resize: none;
+    border: none;
+    background-color: transparent;
 }

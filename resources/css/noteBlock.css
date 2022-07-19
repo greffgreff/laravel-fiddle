@@ -1,0 +1,12 @@
+.note-block {
+    background-color: pink;
+    border-radius: var(--roundness);
+    --ref: 400px;
+    padding: calc(var(--ref)/20);
+    width: var(--ref);
+    aspect-ratio: 1.5;
+}
+
+.note-block textarea {
+    font-size: calc(var(--ref)/20);
+}

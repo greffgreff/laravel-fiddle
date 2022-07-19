@@ -1,0 +1,19 @@
+.note-item-container .note-block {
+    background-color: pink;
+    --ref: 155px;
+    border-radius: calc(var(--ref)/15);
+    padding: calc(var(--ref)/20);
+    width: var(--ref);
+    aspect-ratio: 1.5;
+}
+
+.note-item-container .note-block textarea {
+    font-size: calc(var(--ref)/20);
+}
+
+.note-item-container:hover, 
+.note-item-container .note-block textarea:hover {
+    transform: scale(1.025);
+    cursor: pointer;
+    user-select: none;
+}

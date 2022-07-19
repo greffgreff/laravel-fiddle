@@ -2,10 +2,10 @@ import { faCheck, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import Draggable from 'react-draggable'
-import '../../css/addForm.css'
+import '../../css/addToDoForm.css'
 
-export default function AddForm() {
-    const [form, showForm] = useState(true)
+export default function AddDoToForm() {
+    const [form, showForm] = useState(false);
 
     return (
         <>

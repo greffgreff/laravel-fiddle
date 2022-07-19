@@ -1,6 +1,6 @@
 .todo-item-container {
     display: grid;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 1fr 10fr;
     padding: 15px;
     font-size: 20px;
     border-radius: var(--roundness);
