@@ -59,7 +59,7 @@ export default function Tasks() {
                                 {todos.map((todo) => {
                                     return <ToDoItem key={todo.id} id={todo.id} dateCreated={todo.created_at} title={todo.title} checked={todo.is_completed} onChange={onChangeTodo} />;
                                 })}
-                                <div className="todo-meta">
+                                <div className="todos-meta">
                                     {todos.filter((d) => d.is_completed).length} of {todos.length} completed
                                 </div>
                             </div>
