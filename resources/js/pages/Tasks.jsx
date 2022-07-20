@@ -1,14 +1,15 @@
 import { faCalendarDay, faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../css/tasks.css';
 import { useState, useEffect } from 'react';
 import AddToDoForm from '../components/AddToDoForm';
 import ToDoItem from '../components/ToDoItem';
 import NoteItem from '../components/NoteItem';
+import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+import '../../css/tasks.css';
 
 export default function Tasks() {
     const [isTodosTab, showTodos] = useState(true);
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState();
 
     useEffect(() => {
         fetch('/todos')
@@ -16,8 +17,22 @@ export default function Tasks() {
             .then(setTodos);
     }, []);
 
+    useEffect(() => {
+        if (!!todos && todos.filter((d) => d.is_completed).length == todos.length) {
+            confetti();
+        }
+    }, [todos]);
+
     const onAddTodo = (todo) => {
         setTodos((arr) => [...arr, todo]);
+    };
+
+    const onChangeTodo = (todo) => {
+        setTodos((arr) =>
+            arr.map((t) => {
+                return t.id === todo.id ? todo : t;
+            })
+        );
     };
 
     return (
@@ -38,12 +53,15 @@ export default function Tasks() {
                     </div>
                 </div>
                 <div className="tab-content-area">
-                    {isTodosTab ? (
+                    {isTodosTab && todos ? (
                         <>
                             <div className="todos">
                                 {todos.map((todo) => {
-                                    return <ToDoItem key={todo.id} title={todo.title} checked={todo.complete} />;
+                                    return <ToDoItem key={todo.id} id={todo.id} dateCreated={todo.created_at} title={todo.title} checked={todo.is_completed} onChange={onChangeTodo} />;
                                 })}
+                                <div className="todo-meta">
+                                    {todos.filter((d) => d.is_completed).length} of {todos.length} completed
+                                </div>
                             </div>
                             <AddToDoForm onAdd={onAddTodo} />
                         </>
