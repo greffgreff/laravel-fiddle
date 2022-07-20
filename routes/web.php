@@ -19,3 +19,5 @@ Route::get('/', [ToDoListController::class, 'index']);
 Route::get('/todos', [ToDoListController::class, 'getAll']);
 
 Route::post('/saveTodo', [ToDoListController::class, 'save']);
+
+Route::put('/updateTodoStatus', [ToDoListController::class, 'updateStatus']);
