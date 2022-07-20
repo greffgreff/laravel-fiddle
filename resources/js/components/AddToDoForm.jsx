@@ -40,7 +40,7 @@ export default function AddDoToForm({ onAdd }) {
                                 <FontAwesomeIcon icon={faCheck} />
                             </button>
                         </div>
-                        <textarea ref={todo} name="todo" className="todo-input" placeholder="Beat the shit out of someone..." />
+                        <textarea ref={todo} name="todo" className="todo-input" placeholder="Beat the shit out of noah..." />
                     </div>
                 </Draggable>
             ) : null}

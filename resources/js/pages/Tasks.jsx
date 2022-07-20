@@ -1,9 +1,7 @@
 import { faCalendarDay, faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
-import AddToDoForm from '../components/AddToDoForm';
-import ToDoItem from '../components/ToDoItem';
-import NoteItem from '../components/NoteItem';
+import { AddToDoForm, ToDoItem, NoteItem } from '../components';
 import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 import '../../css/tasks.css';
 

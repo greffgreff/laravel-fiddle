@@ -22,6 +22,7 @@ export default function ToDoItem({ id, title, checked = false, dateCreated, onCh
     return (
         <div className="todo-item-container" onClick={handleComplete}>
             <input className="todo-checkbox" type="checkbox" checked={complete} readOnly />
+            <span className="checkmark"></span>
             <div className="todo-item-title" style={{ opacity: complete ? 0.2 : 1 }}>
                 {title}
             </div>
