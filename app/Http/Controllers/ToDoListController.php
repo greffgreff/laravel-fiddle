@@ -12,6 +12,11 @@ class ToDoListController extends Controller
         return view('tasks', ['todos' => Todo::all()]);
     }
 
+    public function getAll()
+    {
+        return Todo::all();
+    }
+
     public function save(Request $request)
     {
         $newTodo = new Todo;
@@ -22,8 +27,14 @@ class ToDoListController extends Controller
         return $newTodo;
     }
 
-    public function getAll()
+    public function updateStatus(Request $request)
     {
-        return Todo::all();
+        $todoToUpdate = Todo::find($request->id);
+        if ($request->status == $todoToUpdate->is_completed) {
+            return $todoToUpdate;
+        }
+        $todoToUpdate->is_completed = $request->status;
+        $todoToUpdate->save();
+        return $todoToUpdate;
     }
 }
