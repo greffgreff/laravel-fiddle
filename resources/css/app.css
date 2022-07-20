@@ -16,24 +16,53 @@ body {
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 *:focus {
     outline: unset;
 }
 
+.checkmark,
 button:hover,
 input[type='checkbox'] {
     cursor: pointer;
-}
-
-input[type='checkbox'] {
-    accent-color: rgb(76, 76, 76);
 }
 
 textarea {
     resize: none;
     border: none;
     background-color: transparent;
+}
+
+input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    display: flex;
+    align-self: center;
+    height: 20px;
+    aspect-ratio: 1;
+    background-color: #eee;
+    border-radius: 3px;
+}
+
+input[type='checkbox']:checked ~ .checkmark {
+    background-color: #007fe8;
+}
+
+input[type='checkbox']:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkmark:after {
+    content: '';
+    display: none;
+    width: 20px;
+    height: 20px;
 }
