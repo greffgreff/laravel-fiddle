@@ -21,9 +21,9 @@ class NotesController extends Controller
     {
         $newNote = new Note;
         $newNote->user_id = "abc"; // placeholder
-        $newNote->title = $request->note;
-        $newNote->is_completed = 0;
+        $newNote->content = $request->content;
         $newNote->save();
+        error_log($newNote);
         return $newNote;
     }
 

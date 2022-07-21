@@ -9,5 +9,5 @@ use \App\Traits\TraitUuid;
 class ToDo extends Model
 {
     use HasFactory;
-    use \App\Traits\TraitUuid;
+    use TraitUuid;
 }
