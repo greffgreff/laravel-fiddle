@@ -1,18 +1,25 @@
+import React from 'react';
 import { faCalendarDay, faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 import { AddToDoForm, ToDoItem, NoteItem } from '../components';
+// @ts-ignore
 import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 import '../../css/tasks.css';
+import Todo from '../types/Todo';
+import { Note } from '../types';
 
 export default function Tasks() {
     const [isTodosTab, showTodos] = useState(true);
-    const [todos, setTodos] = useState();
+    const [todos, setTodos] = useState<Todo[]>();
+    const [notes, setNotes] = useState<Note[]>();
 
     useEffect(() => {
         fetch('/todos')
             .then((res) => res.json())
             .then(setTodos);
+
+        setNotes(noteData); // testing
     }, []);
 
     useEffect(() => {
@@ -21,11 +28,11 @@ export default function Tasks() {
         }
     }, [todos]);
 
-    const onAddTodo = (todo) => {
+    const onAddTodo = (todo: Todo) => {
         setTodos((arr) => [...arr, todo]);
     };
 
-    const onChangeTodo = (todo) => {
+    const onChangeTodo = (todo: Todo) => {
         setTodos((arr) =>
             arr.map((t) => {
                 return t.id === todo.id ? todo : t;
@@ -55,7 +62,7 @@ export default function Tasks() {
                         <>
                             <div className="todos">
                                 {todos.map((todo) => {
-                                    return <ToDoItem key={todo.id} id={todo.id} dateCreated={todo.created_at} title={todo.title} checked={todo.is_completed} onChange={onChangeTodo} />;
+                                    return <ToDoItem key={todo.id} todo={todo} onChange={onChangeTodo} />;
                                 })}
                                 <div className="todos-meta">
                                     {todos.filter((d) => d.is_completed).length} of {todos.length} completed
@@ -63,17 +70,39 @@ export default function Tasks() {
                             </div>
                             <AddToDoForm onAdd={onAddTodo} />
                         </>
-                    ) : (
+                    ) : notes ? (
                         <>
                             <div className="notes">
-                                <NoteItem text="This is some text" />
-                                <NoteItem text="This is some more fancier text" />
+                                {notes.map((note) => {
+                                    return <NoteItem key={note.id} note={note} />;
+                                })}
                             </div>
                             {/* AddNoteForm */}
                         </>
-                    )}
+                    ) : null}
                 </div>
             </div>
         </div>
     );
 }
+
+const noteData: Note[] = [
+    {
+        id: 'abc',
+        user_id: 'abc',
+        content: 'This is a note',
+        created_at: 'abc',
+    },
+    {
+        id: '123',
+        user_id: 'abc',
+        content: 'This is another note',
+        created_at: 'abc',
+    },
+    {
+        id: '999',
+        user_id: 'abc',
+        content: 'This is a final note',
+        created_at: 'abc',
+    },
+];

@@ -1,10 +1,13 @@
 import { faCheck, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
+import React from 'react';
 import { useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import '../../css/addToDoForm.css';
+import { Todo } from '../types';
 
-export default function AddDoToForm({ onAdd }) {
+export default function AddDoToForm({ onAdd }: { onAdd: (todo: Todo) => void }) {
     const [form, showForm] = useState(false);
     const todo = useRef(null);
 

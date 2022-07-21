@@ -11,7 +11,7 @@
     <title>MySnags</title>
 
     @viteReactRefresh
-    @vite('resources/js/app.jsx')
+    @vite('resources/js/app.tsx')
 </head>
 
 <body>

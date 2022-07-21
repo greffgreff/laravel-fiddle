@@ -2,15 +2,18 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import '../../css/ToDoItem.css';
+import axios from 'axios';
+import React from 'react';
+import { Todo } from '../types';
 
-export default function ToDoItem({ id, title, checked = false, dateCreated, onChange }) {
-    const [complete, isComplete] = useState(checked);
+export default function ToDoItem({ todo, onChange }: { todo: Todo; onChange: (todo: Todo) => void }) {
+    const [complete, isComplete] = useState<boolean>(!!todo.is_completed);
 
     const handleComplete = () => {
         isComplete(!complete);
         const todoToUpdate = {
-            id: id,
-            status: !complete ? 1 : 0,
+            id: todo.id,
+            status: !complete ? 1 : 0, // ints for future statuses
         };
 
         axios
@@ -24,12 +27,12 @@ export default function ToDoItem({ id, title, checked = false, dateCreated, onCh
             <input className="todo-checkbox" type="checkbox" checked={complete} readOnly />
             <span className="checkmark"></span>
             <div className="todo-item-title" style={{ opacity: complete ? 0.2 : 1 }}>
-                {title}
+                {todo.title}
             </div>
-            {dateCreated ? (
+            {todo.created_at ? (
                 <span className="tooltip-text">
                     <FontAwesomeIcon icon={faInfoCircle} />
-                    Added {dateCreated}
+                    Added {todo.created_at}
                 </span>
             ) : null}
         </div>
