@@ -23,6 +23,6 @@ Route::post('/saveTodo', [ToDoListController::class, 'save']);
 
 Route::put('/updateTodoStatus', [ToDoListController::class, 'updateStatus']);
 
-Route::put('/saveNote', [NotesController::class, 'save']);
+Route::post('/saveNote', [NotesController::class, 'save']);
 
 Route::put('/updateNoteContent', [NotesController::class, 'updatedContent']);
