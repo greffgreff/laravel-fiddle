@@ -9,7 +9,7 @@ class ToDoListController extends Controller
 {
     public function index()
     {
-        return view('tasks', ['todos' => Todo::all()]);
+        return view('tasks');
     }
 
     public function getAll()
