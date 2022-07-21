@@ -2,11 +2,12 @@ import React from 'react';
 import { faCalendarDay, faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
-import { AddToDoForm, ToDoItem, NoteItem } from '../components';
+import { AddToDoForm, ToDoItem, NoteItem, NoteBlock, DraggableNoteBlock } from '../components';
 import { Todo, Note } from '../types';
 // @ts-ignore
 import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 import '../../css/tasks.css';
+import Draggable from 'react-draggable';
 
 export default function Tasks() {
     const [isTodosTab, showTodos] = useState(true);
@@ -63,7 +64,7 @@ export default function Tasks() {
                                 {todos.map((todo) => {
                                     return <ToDoItem key={todo.id} todo={todo} onChange={onChangeTodo} />;
                                 })}
-                                <div className="todos-meta">
+                                <div className="tab-meta">
                                     {todos.filter((d) => d.is_completed).length} of {todos.length} completed
                                 </div>
                             </div>
