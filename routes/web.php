@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotesController;
 use App\Http\Controllers\ToDoListController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,7 @@ Route::get('/todos', [ToDoListController::class, 'getAll']);
 Route::post('/saveTodo', [ToDoListController::class, 'save']);
 
 Route::put('/updateTodoStatus', [ToDoListController::class, 'updateStatus']);
+
+Route::put('/saveNote', [NotesController::class, 'save']);
+
+Route::put('/updateNoteContent', [NotesController::class, 'updatedContent']);

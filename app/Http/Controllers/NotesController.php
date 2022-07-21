@@ -27,7 +27,7 @@ class NotesController extends Controller
         return $newNote;
     }
 
-    public function update(Request $request)
+    public function updatedContent(Request $request)
     {
         $noteToUpdate = Note::find($request->id);
         if ($request->status == $noteToUpdate->is_completed) {
