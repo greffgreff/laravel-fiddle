@@ -2,7 +2,7 @@ import React from 'react';
 import { Note } from '../types';
 import '../../css/noteBlock.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark, faZ } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { useRef } from 'react';
 import { useState } from 'react';
@@ -17,22 +17,29 @@ export default function NoteBlock({ note, readonly = false, onChange, onHide }: 
         }
 
         const noteToUpdate = {
-            id: note.id,
+            id: note?.id,
             content: contentInput.current.value,
         };
 
-        axios
-            .post('/saveNote', noteToUpdate)
-            .then((res) => onChange(res.data))
-            .catch(console.log);
+        if (note) {
+            axios
+                .put('/updateNoteContent', noteToUpdate)
+                .then((res) => onChange?.(res.data))
+                .catch(console.log);
+        } else {
+            axios
+                .post('/saveNote', noteToUpdate)
+                .then((res) => onChange?.(res.data))
+                .catch(console.log);
+        }
 
         hideNote(true);
-        onHide();
+        onHide?.();
     };
 
     const handleDelete = () => {
         hideNote(true); // testing
-        onHide();
+        onHide?.();
     };
 
     return (
@@ -47,7 +54,7 @@ export default function NoteBlock({ note, readonly = false, onChange, onHide }: 
                     </button>
                 </div>
             ) : null}
-            <textarea className="note-block-content" ref={contentInput} placeholder="Fishing requires in incredible amount of fucking patience..." defaultValue={note?.content ?? ''} readOnly={readonly} />
+            {readonly ? <textarea className="note-block-content" ref={contentInput} value={note?.content} readOnly /> : <textarea className="note-block-content" ref={contentInput} defaultValue={note?.content} />}
         </div>
     );
 }

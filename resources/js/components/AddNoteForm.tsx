@@ -10,22 +10,6 @@ import DraggableNoteBlock from './DraggableNoteBlock';
 
 export default function AddNoteForm({ onAdd }: { onAdd?: (note: Note) => void }) {
     const [form, showForm] = useState(false);
-    const note = useRef(null);
-
-    const handlePost = () => {
-        showForm(false);
-
-        if (!note.current.value) {
-            return;
-        }
-
-        axios
-            .post('/saveNote', { note: note.current.value })
-            .then((res) => onAdd(res.data))
-            .catch((error) => {
-                console.log('ERROR:: ', error.response.data);
-            });
-    };
 
     return (
         <>
@@ -33,9 +17,7 @@ export default function AddNoteForm({ onAdd }: { onAdd?: (note: Note) => void })
                 <FontAwesomeIcon icon={faPlus} />
             </button>
 
-            {form ? (
-                <DraggableNoteBlock />
-            ) : null}
+            {form ? <DraggableNoteBlock onChange={onAdd} /> : null}
         </>
-    ); 
+    );
 }

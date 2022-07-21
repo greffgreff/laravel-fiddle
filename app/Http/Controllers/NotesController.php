@@ -23,7 +23,6 @@ class NotesController extends Controller
         $newNote->user_id = "abc"; // placeholder
         $newNote->content = $request->content;
         $newNote->save();
-        error_log($newNote);
         return $newNote;
     }
 

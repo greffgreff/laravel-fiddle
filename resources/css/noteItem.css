@@ -1,16 +1,15 @@
 .note-item-container .note-block-container {
     --ref: 175px;
-    border-radius: calc(var(--ref)/15);
+    border-radius: calc(var(--ref) / 15);
     width: var(--ref);
 }
 
 .note-item-container .note-block-content {
-    padding: calc(var(--ref)/15);
-    font-size: calc(var(--ref)/20);
+    padding: calc(var(--ref) / 15);
+    font-size: calc(var(--ref) / 20);
 }
 
-.note-item-container:hover, 
-.note-item-container .note-block-content:hover {
+.note-item-container:hover {
     transform: scale(1.025);
     cursor: pointer;
     user-select: none;

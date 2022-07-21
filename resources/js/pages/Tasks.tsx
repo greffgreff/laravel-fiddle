@@ -7,7 +7,6 @@ import { Todo, Note } from '../types';
 // @ts-ignore
 import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 import '../../css/tasks.css';
-import Draggable from 'react-draggable';
 
 export default function Tasks() {
     const [isTodosTab, showTodos] = useState(true);
@@ -19,7 +18,9 @@ export default function Tasks() {
             .then((res) => res.json())
             .then(setTodos);
 
-        setNotes(noteData); // testing
+        fetch('/notes')
+            .then((res) => res.json())
+            .then(setNotes);
     }, []);
 
     useEffect(() => {
@@ -42,6 +43,14 @@ export default function Tasks() {
 
     const onAddNote = (note: Note) => {
         setNotes((arr) => [...arr, note]);
+    };
+
+    const onChangeNote = (note: Note) => {
+        setNotes((arr) =>
+            arr.map((t) => {
+                return t.id === note.id ? note : t;
+            })
+        );
     };
 
     return (
@@ -78,7 +87,7 @@ export default function Tasks() {
                         <>
                             <div className="notes">
                                 {notes.map((note) => {
-                                    return <NoteItem key={note.id} note={note} />;
+                                    return <NoteItem key={note.id} note={note} onChange={onChangeNote} />;
                                 })}
                             </div>
                             <AddNoteForm onAdd={onAddNote} />
