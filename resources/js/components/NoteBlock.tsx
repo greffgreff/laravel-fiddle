@@ -22,12 +22,12 @@ export default function NoteBlock({ note, readonly = false, onChange, onHide }: 
         };
 
         axios
-            .put('/updateNoteContent', noteToUpdate)
+            .post('/saveNote', noteToUpdate)
             .then((res) => onChange(res.data))
             .catch(console.log);
 
         hideNote(true);
-        onHide(true);
+        onHide();
     };
 
     const handleDelete = () => {
