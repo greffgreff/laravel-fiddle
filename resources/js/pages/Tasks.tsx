@@ -2,7 +2,7 @@ import React from 'react';
 import { faCalendarDay, faList, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
-import { AddToDoForm, ToDoItem, NoteItem, NoteBlock, DraggableNoteBlock } from '../components';
+import { AddToDoForm, ToDoItem, NoteItem, NoteBlock, DraggableNoteBlock, AddNoteForm } from '../components';
 import { Todo, Note } from '../types';
 // @ts-ignore
 import confetti from 'https://cdn.skypack.dev/canvas-confetti';
@@ -38,6 +38,10 @@ export default function Tasks() {
                 return t.id === todo.id ? todo : t;
             })
         );
+    };
+
+    const onAddNote = (note: Note) => {
+        setNotes((arr) => [...arr, note]);
     };
 
     return (
@@ -77,7 +81,7 @@ export default function Tasks() {
                                     return <NoteItem key={note.id} note={note} />;
                                 })}
                             </div>
-                            {/* AddNoteForm */}
+                            <AddNoteForm onAdd={onAddNote} />
                         </>
                     ) : null}
                 </div>

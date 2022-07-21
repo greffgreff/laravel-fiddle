@@ -1,5 +1,7 @@
 :root {
     --roundness: 15px;
+    --todos-color: rgb(253, 228, 13);
+    --notes-color: rgb(255, 168, 106);
 }
 
 body {

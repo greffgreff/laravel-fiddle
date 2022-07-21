@@ -3,7 +3,6 @@
     border-radius: calc(var(--ref)/15);
     padding: calc(var(--ref)/20);
     width: var(--ref);
-    aspect-ratio: 1.5;
 }
 
 .note-item-container .note-block-container textarea {

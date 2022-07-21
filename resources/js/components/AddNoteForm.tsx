@@ -4,22 +4,22 @@ import axios from 'axios';
 import React from 'react';
 import { useRef, useState } from 'react';
 import Draggable from 'react-draggable';
-import '../../css/addToDoForm.css';
-import { Todo } from '../types';
+import '../../css/addNoteForm.css';
+import { Note } from '../types';
 
-export default function AddDoToForm({ onAdd }: { onAdd?: (todo: Todo) => void }) {
+export default function AddNoteForm({ onAdd }: { onAdd?: (note: Note) => void }) {
     const [form, showForm] = useState(false);
-    const todo = useRef(null);
+    const note = useRef(null);
 
     const handlePost = () => {
         showForm(false);
 
-        if (!todo.current.value) {
+        if (!note.current.value) {
             return;
         }
 
         axios
-            .post('/saveTodo', { todo: todo.current.value })
+            .post('/saveNote', { note: note.current.value })
             .then((res) => onAdd(res.data))
             .catch((error) => {
                 console.log('ERROR:: ', error.response.data);
@@ -28,7 +28,7 @@ export default function AddDoToForm({ onAdd }: { onAdd?: (todo: Todo) => void })
 
     return (
         <>
-            <button className="add-task-btn" onClick={() => showForm(!form)}>
+            <button className="add-note-btn" onClick={() => showForm(!form)}>
                 <FontAwesomeIcon icon={faPlus} />
             </button>
 
@@ -43,7 +43,7 @@ export default function AddDoToForm({ onAdd }: { onAdd?: (todo: Todo) => void })
                                 <FontAwesomeIcon icon={faCheck} />
                             </button>
                         </div>
-                        <textarea ref={todo} name="todo" className="todo-input" placeholder="Beat the shit out of noah..." />
+                        <textarea ref={note} name="note" className="note-input" placeholder="Beat the shit out of noah..." />
                     </div>
                 </Draggable>
             ) : null}

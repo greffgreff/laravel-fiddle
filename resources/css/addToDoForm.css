@@ -51,7 +51,7 @@
     border-radius: 100%;
     border: none;
     font-size: 33px;
-    background-color: rgb(253, 228, 13);
+    background-color: var(--todos-color);
     color: white;
     box-shadow: inherit;
     overflow-y: scroll;
