@@ -14,3 +14,7 @@
     cursor: pointer;
     user-select: none;
 }
+
+.note-item-container .note-block-content:hover {
+    cursor: pointer;
+}
