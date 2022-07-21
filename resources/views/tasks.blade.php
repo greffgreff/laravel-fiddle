@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg">
 
-    <title>MySnags</title>
+    <title>My Snags</title>
 
     @viteReactRefresh
     @vite('resources/js/app.tsx')

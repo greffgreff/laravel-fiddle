@@ -54,7 +54,7 @@ export default function NoteBlock({ note, readonly = false, onChange, onHide }: 
                     </button>
                 </div>
             ) : null}
-            {readonly ? <textarea className="note-block-content" ref={contentInput} value={note?.content} readOnly /> : <textarea className="note-block-content" ref={contentInput} defaultValue={note?.content} />}
+            {readonly ? <textarea className="note-block-content" ref={contentInput} value={note?.content} readOnly /> : <textarea className="note-block-content" placeholder='I have 3 legs...' ref={contentInput} defaultValue={note?.content} />}
         </div>
     );
 }

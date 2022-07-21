@@ -65,10 +65,10 @@ export default function Tasks() {
                         <FontAwesomeIcon icon={faNoteSticky} />
                         <span className="tab-tooltip-text">My Notes</span>
                     </div>
-                    <div>
+                    {/* <div>
                         <FontAwesomeIcon icon={faCalendarDay} />
                         <span className="tab-tooltip-text">My Reminders</span>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="tab-content-area">
                     {isTodosTab && todos ? (
