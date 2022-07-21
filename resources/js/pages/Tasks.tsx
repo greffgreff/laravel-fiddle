@@ -3,11 +3,10 @@ import { faCalendarDay, faList, faNoteSticky } from '@fortawesome/free-solid-svg
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 import { AddToDoForm, ToDoItem, NoteItem } from '../components';
+import { Todo, Note } from '../types';
 // @ts-ignore
 import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 import '../../css/tasks.css';
-import Todo from '../types/Todo';
-import { Note } from '../types';
 
 export default function Tasks() {
     const [isTodosTab, showTodos] = useState(true);
