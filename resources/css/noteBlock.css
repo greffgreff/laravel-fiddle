@@ -3,10 +3,37 @@
     aspect-ratio: 1.3;
     border-radius: var(--roundness);
     --ref: 400px;
-    padding: calc(var(--ref) / 20);
     width: var(--ref);
 }
 
-.note-block-container textarea {
+.note-block-content {
+    padding: calc(var(--ref) / 10) calc(var(--ref) / 13);
     font-size: calc(var(--ref) / 20);
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+}
+
+.note-block-btns {
+    right: 0;
+    position: absolute;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+}
+
+.note-block-btn {
+    padding: 10px 15px;
+    border: none;
+    font-size: 25px;
+    background-color: transparent;
+    box-shadow: inherit;
+    overflow-y: scroll;
+    width: fit-content;
+}
+
+.note-block-btn:hover {
+    /* opacity: 0.2; */
+    transform: scale(1.2) rotate(10deg);
 }

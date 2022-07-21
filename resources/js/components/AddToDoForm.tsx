@@ -34,12 +34,12 @@ export default function AddDoToForm({ onAdd }: { onAdd?: (todo: Todo) => void })
 
             {form ? (
                 <Draggable>
-                    <div className="form-container">
-                        <div className="form-container-btns">
-                            <button className="form-btn" onClick={() => showForm(false)}>
+                    <div className="todos-form-container">
+                        <div className="todos-form-container-btns">
+                            <button className="todos-form-btn" onClick={() => showForm(false)}>
                                 <FontAwesomeIcon icon={faXmark} />
                             </button>
-                            <button className="form-btn" onClick={handlePost}>
+                            <button className="todos-form-btn" onClick={handlePost}>
                                 <FontAwesomeIcon icon={faCheck} />
                             </button>
                         </div>

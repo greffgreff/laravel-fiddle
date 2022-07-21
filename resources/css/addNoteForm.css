@@ -18,3 +18,14 @@
 .add-note-btn:hover {
     transform: translate(-50%, 50%) scale(1.1);
 }
+
+.notes-form-container {
+    position: absolute;
+    top: -100px;
+    right: 100px;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    border-radius: var(--roundness);
+    box-shadow: 0 40px 30px -30px rgba(70, 70, 70, 0.1);
+    /* animation: form 0.25s ease-out forwards; */
+}

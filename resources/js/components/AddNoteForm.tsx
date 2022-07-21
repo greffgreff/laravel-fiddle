@@ -6,6 +6,7 @@ import { useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import '../../css/addNoteForm.css';
 import { Note } from '../types';
+import DraggableNoteBlock from './DraggableNoteBlock';
 
 export default function AddNoteForm({ onAdd }: { onAdd?: (note: Note) => void }) {
     const [form, showForm] = useState(false);
@@ -33,20 +34,8 @@ export default function AddNoteForm({ onAdd }: { onAdd?: (note: Note) => void })
             </button>
 
             {form ? (
-                <Draggable>
-                    <div className="form-container">
-                        <div className="form-container-btns">
-                            <button className="form-btn" onClick={() => showForm(false)}>
-                                <FontAwesomeIcon icon={faXmark} />
-                            </button>
-                            <button className="form-btn" onClick={handlePost}>
-                                <FontAwesomeIcon icon={faCheck} />
-                            </button>
-                        </div>
-                        <textarea ref={note} name="note" className="note-input" placeholder="Beat the shit out of noah..." />
-                    </div>
-                </Draggable>
+                <DraggableNoteBlock />
             ) : null}
         </>
-    );
+    ); 
 }

@@ -14,7 +14,7 @@ export default function NoteItem({ note }: { note: Note }) {
                 <NoteBlock note={note} readonly />
             </div>
 
-            {isNoteShown ? <DraggableNoteBlock note={note} /> : null}
+            {isNoteShown ? <DraggableNoteBlock note={note} onHide={() => showNote(false)} /> : null}
         </>
     );
 }
